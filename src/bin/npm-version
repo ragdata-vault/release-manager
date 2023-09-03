@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+# ==================================================================
+# npm-version
+# ==================================================================
+# Release Manager
+#
+# File:         npm-version
+# Author:       Ragdata
+# Date:         03/09/2023
+# License:      MIT License
+# Copyright:    Copyright © 2023 Darren (Ragdata) Poulton
+# ==================================================================
+# PREFLIGHT
+# ==================================================================
+# set debug mode = false
+declare -gx NPM_DEBUG=0
+# if script is called with 'debug' as an argument, then set debug mode
+if [[ "${1,,}" == "debug" ]]; then shift; NPM_DEBUG=1; set -- "${@}"; set -axeET; else set -aeET; fi
+# ==================================================================
+# VARIABLES
+# ==================================================================
+readonly RM_BIN="$(dirname "$0")"
+readonly RM_LIB="$(dirname "$(dirname "$0")")"
+readonly DEFAULT_VERSION="0.1.0"
+# ==================================================================
+# DEPENDENCIES
+# ==================================================================
+source "$RM_LIB"/utilities.sh
+# ==================================================================
+# FUNCTIONS
+# ==================================================================
+# ------------------------------------------------------------------
+# npm::replaceVersion
+# ------------------------------------------------------------------
+npm::replaceVersion()
+{
+	local -r content="${1}" newVersion="${2}"
+	echo "$content" | jq --arg new "$newVersion" '.version = $new'
+}
+# ------------------------------------------------------------------
+# npm::bumpVersion
+# ------------------------------------------------------------------
+npm::bumpVersion()
+{
+	local -r newVersion="${1}" fileName="${2}"
+	local originalContent updatedContent
+
+	if ! originalContent="$(cat "$fileName")"; then
+		echo "Cannot read '$fileName'"
+		exit 1
+	fi
+	if ! updatedContent="$(npm::replaceVersion "$originalContent" "$newVersion")"; then
+		echo "Failed to update content"
+		exit 1
+	fi
+	echo -e "${updatedContent}" > "$fileName" || { echo "Could not update file '$fileName'"; exit 1; }
+}
+# ==================================================================
+# MAIN
+# ==================================================================
+declare newVersion
+declare -r -a fileNames=("package.json" "package-lock.json")
+
+if ! newVersion="$(utilities::previousVersion)"; then
+	echo "Could not retrieve the new version '$newVersion'"
+	exit 1
+fi
+
+for file in "${fileNames[@]}"
+do
+	if ! utilities::fileExists "$file"; then
+		echo "Cannot find '$file' ... Skipping"
+		continue
+	fi
+	npm::bumpVersion "$newVersion" "$file"
+	echo "Updated npm version in '$file' to '$newVersion'"
+done
