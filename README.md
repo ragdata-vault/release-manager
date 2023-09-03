@@ -59,26 +59,6 @@ If you like this repository, please give it a ⭐ (it really does help)
 
 ## ⭐ [Project Overview](#toc)
 
-My `Reusable Workflows` repository contains all of the scripts I use to automate processes in response to various different events here at GitHub.  The most common of these are executed whenever I push code to a particular branch of the repo.
-
-That means - without me having to think about it at all - each and every time I push code to this repo which is important enough to care about, automated processes fire off to check the quality and health of the code.  These process broadly fall into 3 categories:
-
-- **CONTINUOUS INTEGRATION (CI)**
-  - `Lint` the code - syntax errors / style checks / spell checks
-  - `Build` the code (if required) - set the code up so that it's ready to run
-  - `Test` the code - run pre-written tests to ensure the code works correctly
-
-
-- **CONTINUOUS DEPLOYMENT (CD)**
-  - `Release` the code - compile changelogs, increment version numbers, and send to package managers (DockerHub, NPM, Composer, etc)
-  - `Deploy` the code - send the latest, thoroughly tested updates into the field to do the job they were designed for!
-
-
-- **MISCELLANEOUS DEVOPS** (DevOps are **Operations** which support the **Development** process)
-  - Processes which compile data and provide insight into our workflows
-  - Processes which keep the repository running smoothly
-  - Processes which receive and dispatch notifications
-  - And just about anything you can think of!
 
 
 ### [Branch Reliability](#toc)
@@ -98,26 +78,7 @@ If you're contributing code to the project, you'll want 🔴
 
 ## ❓ [What's Included?](#toc)
 
-#### LEGEND:
 
-- ✅ - Available Now
-- ☑️ - Work in Progress
-
-
-- ✅ Auto-Assign Issues to Developers
-- ☑️ Bump Versions
-- ☑️ Continuous Deployment, Generic (CD)
-- ☑️ Continuous Integration, Generic (CI)
-- ✅ Container Image Builder, Generic
-- ✅ Send Email
-- ☑️ GH-Pages Deployment
-- ☑️ Issue Label Management
-- ☑️ Repo Label Management
-- ☑️ Linters
-- ✅ Node.js CI
-- ✅ Node.js Publishing
-- ☑️ Publishing
-- ☑️ Release Management
 
 [`^ Top`](#toc)
 

@@ -1,7 +1,7 @@
 {
     "name": "release-manager",
     "version": "0.1.0",
-    "description": "Complete version and release management including changelog generation, version bump, and GitHub release"
+    "description": "Complete version and release management including changelog generation, version bump, and GitHub release",
     "main": "./src/bin/release-manager",
     "bin": {
         "release-manager": "./src/bin/release-manager"

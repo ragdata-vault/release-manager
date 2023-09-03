@@ -25,6 +25,6 @@ repository-code: 'https://github.com/ragdata/release-manager'
 url: 'https://ragdata.github.io/release-manager'
 
 abstract: >-
-  Reusable GitHub Actions, Workflows, DevContainers and more ...
+  Complete version and release management including changelog creation, version bump, and GitHub release
 
 license: MIT
