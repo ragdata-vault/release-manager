@@ -13,8 +13,8 @@
 # ==================================================================
 # VARIABLES
 # ==================================================================
-readonly RM_BIN="$(dirname "$0")"
-readonly RM_LIB="$(dirname "$(dirname "$0")")"
+readonly RM_LIB="$(dirname "$0")"
+readonly RM_BIN="$(dirname "$(dirname "$0")")"
 readonly PLACEHOLDER="{{version}}"
 # ==================================================================
 # DEPENDENCIES
