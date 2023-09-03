@@ -1,0 +1,41 @@
+{
+    "name": "release-manager",
+    "version": "0.1.0",
+    "description": "Complete version and release management including changelog generation, version bump, and GitHub release"
+    "main": "./src/bin/release-manager",
+    "bin": {
+        "release-manager": "./src/bin/release-manager"
+    },
+    "scripts": {
+        "lint": "npm run lint:yaml && npm run lint:md && npm run lint:md:relative-urls && npm run lint:md:consistency",
+        "lint:yaml": "yamllint **/*.yaml --ignore=node_modules/**/*.yaml",
+        "lint:md": "markdownlint **/*.md --ignore node_modules",
+        "lint:md:relative-urls": "remark . --frail --use remark-validate-links",
+        "lint:md:consistency": "remark . --frail --use remark-preset-lint-consistent"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ragdata/release-manager"
+    },
+    "keywords": [
+        "GitHub",
+        "Version",
+        "Semver",
+        "CHANGELOG",
+        "Release"
+    ],
+    "author": "Darren 'Ragdata' Poulton <ragdata@ragdata.dev> (https://github.com/ragdata)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ragdata/release-manager/issues"
+    },
+    "homepage": "https://github.com/ragdata/release-manager",
+    "devDependencies": {
+        "markdownlint-cli": "^0.28.1",
+        "remark-cli": "^10.0.0",
+        "remark-lint-no-dead-urls": "^1.1.0",
+        "remark-preset-lint-consistent": "^5.0.1",
+        "remark-validate-links": "^11.0.0",
+        "yaml-lint": "^1.2.4"
+    }
+}
