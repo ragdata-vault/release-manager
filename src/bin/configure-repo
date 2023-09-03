@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+# ==================================================================
+# configure-repo
+# ==================================================================
+# Release Manager
+#
+# File:         configure-repo
+# Author:       Ragdata
+# Date:         03/09/2023
+# License:      MIT License
+# Copyright:    Copyright © 2023 Darren (Ragdata) Poulton
+# ==================================================================
+# PREFLIGHT
+# ==================================================================
+# set debug mode = false
+declare -gx REPO_DEBUG=0
+# if script is called with 'debug' as an argument, then set debug mode
+if [[ "${1,,}" == "debug" ]]; then shift; REPO_DEBUG=1; set -- "${@}"; set -axeET; else set -aeET; fi
+# ==================================================================
+# VARIABLES
+# ==================================================================
+readonly RM_BIN="$(dirname "$0")"
+readonly RM_LIB="$(dirname "$(dirname "$0")")"
+readonly DEFAULT_VERSION="0.1.0"
+# ==================================================================
+# DEPENDENCIES
+# ==================================================================
+source "$RM_LIB"/utilities.sh
+# ==================================================================
+# FUNCTIONS
+# ==================================================================
+# ------------------------------------------------------------------
+# setOrigin
+# ------------------------------------------------------------------
+setOrigin()
+{
+	local -r originURL="${1}"
+	git remote set-url origin "$originURL" || { echo "Failed to set remote URL for repo to '$originURL'"; exit 1; }
+}
+# ------------------------------------------------------------------
+# setUser
+# ------------------------------------------------------------------
+setUser()
+{
+	local -r userName="${1}"
+	local -r userEmail="$userName@users.noreply.github.com"
+	git config --local user.name "$userName" || { echo "Failed to set local user to '$userName'"; exit 1; }
+	git config --local user.email "$userEmail" || { echo "Failed to set local user email to '$userEmail'"; exit 1; }
+}
+# ------------------------------------------------------------------
+# validateArgs
+# ------------------------------------------------------------------
+validateArgs()
+{
+	local -r repo="${1}" token="${2}" user="${3}"
+	if utilities::isEmpty "$repo"; then echo "Repo name is not set"; exit 1; fi
+	if utilities::isEmpty "$token"; then echo "Access Token is not set"; exit 1; fi
+	if utilities::isEmpty "$user"; then echo "Git user is not set"; exit 1; fi
+}
+# ==================================================================
+# MAIN
+# ==================================================================
+[[ "$#" -lt 3 ]] && { echo "Missing Argument!"; exit 1; }
+
+declare repo="${1}" token="${2}" user="${3}"
+
+validateArgs "$repo" "$token" "$user"
+
+setOrigin "https://x-access-token:$token@github.com/$repo"
+
+setUser "$user"
