@@ -1,3 +1,4 @@
+<!--{{ HEADER::BEGIN }}-->
 <h1 align="center">
 
 <img width="100%" src="https://raw.githubusercontent.com/Ragdata/media/master/banner/pre-release.svg" />
@@ -30,7 +31,8 @@
 [![wakatime](https://wakatime.com/badge/user/7e04d9d4-3a44-495e-b622-69fdbafd036c/project/a56f84b2-716c-48dd-b4a4-3ef7a9884a27.svg?style=for-the-badge)](https://wakatime.com/badge/user/7e04d9d4-3a44-495e-b622-69fdbafd036c/project/a56f84b2-716c-48dd-b4a4-3ef7a9884a27)
 
 </div>
-
+<!--{{ HEADER::END }}-->
+<!--{{ TOP-STAR::START }}-->
 <h3 align="center">
 
 If you like this repository, please give it a ⭐ (it really does help)
@@ -38,7 +40,8 @@ If you like this repository, please give it a ⭐ (it really does help)
 <img alt="GitHub repository stars" src="https://img.shields.io/github/stars/ragdata/release-manager?style=social">
 
 </h3>
-
+<!--{{ TOP-STAR::END }}-->
+<!--{{ TOC::START }}-->
 <details><summary><h2><a name="toc">📖 Table of Contents</a></h2></summary>
 
 - [Project Overview](#-project-overview)
@@ -56,7 +59,7 @@ If you like this repository, please give it a ⭐ (it really does help)
 - [Resources](#-resources)
 
 </details>
-
+<!--{{ TOC::END }}-->
 ## ⭐ [Project Overview](#toc)
 
 
