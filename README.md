@@ -176,14 +176,14 @@ If you discover any issue regarding the security of this project, please disclos
 ## 💎 [Contributors](#toc)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/github/all-contributors/ragdata/release-manager?color=ee8449&style=for-the-badge)](CONTRIBUTORS.md)
+[![All Contributors](https://img.shields.io/github/all-contributors/ragdata/release-manager?color=ee8449&style=for-the-badge)](.github/CONTRIBUTORS.md)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 If you'd like to make a contribution, then please see the [**Bash Bits Contributor's Guide**][contributing]
 
 It's not just contributions of code that I'm looking for.  If you have any ideas or suggestions about how this project may be improved, don't hesitate to [open an issue][issues] and let me know!  Contributions of ALL kinds will be recognised here if they are made part of this project - thanks to the [All-Contributors][all-contributors] bot.
 
-[**VIEW PROJECT CONTRIBUTORS**](CONTRIBUTORS.md)
+[**VIEW PROJECT CONTRIBUTORS**](.github/CONTRIBUTORS.md)
 
 [`^ Top`](#toc)
 
